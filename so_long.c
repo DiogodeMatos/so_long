@@ -10,15 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft/libft.h"
-/*int	main(int argc, char **argv)
+#include "so_long.h"
+
+int	main(int argc, char **argv)
 {
-	if (argc < 2)
+	if (argc = 2)
 		return (0);
 	ft_checkmaperror(argv);
-}*/
+	return (0);
+}
 
-int	main()
+/*int	main()
 {
 	ft_printf("so_long");
-}
+}*/
