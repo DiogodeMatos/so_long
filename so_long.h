@@ -14,11 +14,22 @@
 # define SO_LONG_H
 
 # include "./libft/libft.h"
-# include "../minilibx-linux/mlx.h"
+# include "./minilibx-linux/mlx.h"
 # include <X11/keysym.h>
 # include <X11/X.h>
 
 typedef struct s_map
 {
-	int	collectible
-}
+	int	collectible;
+	int	wall;
+	int	player;
+	int	exit;
+	int	empty;
+	int	width;
+	int	height;
+	char	**map;
+}								t_map;
+
+int	ft_checkmap(char **argv, t_map *map);
+
+# endif
