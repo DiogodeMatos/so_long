@@ -12,13 +12,13 @@
 
 #include "so_long.h"
 
-void ft_checkber(char **argv)
+int ft_checkber(char **argv)
 {
 	static int	a;
 	char	*str;
 	int	b;
 
-	str = ".ber"
+	str = ".ber";
 	while (argv[1][a])
 	{
 		b = 0;
@@ -26,12 +26,15 @@ void ft_checkber(char **argv)
 		{
 				a++;
 				b++;
-				if (argv[1][a] == '/0' && str[b] == '/0')
-					write(1,"isso", 4);
+				if (argv[1][a] == '\0' && str[b] == '\0')
+					return (1);
+				else if ((argv[1][a] == '\0' && str[b] != '\0') || (argv[1][a] != '\0' && str[b] == '\0'))
+					a--;
 		}
 		a++;
 	}
-	write(1,"error", 4);
+	write(1,"Error: Map need end in .ber to open", 28);
+	return (0);
 }
 
 void	ft_checkmaperror(char **argv)
