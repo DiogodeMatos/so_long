@@ -33,7 +33,7 @@ int ft_checkber(char **argv)
 		}
 		a++;
 	}
-	ft_printf("%s", "Error\nInvalid file extension");
+	ft_printf("%s", "Error\nInvalid file extension\n");
 	return (0);
 }
 
@@ -54,11 +54,11 @@ int	main(int argc, char **argv)
 	t_map	map;
 
 	if (argc != 2)
-		return (ft_printf("%s", "Error\nInvalid number of arguments"));
+		return (ft_printf("%s", "Error\nInvalid number of arguments\n"));
 	if (ft_checkber(argv) == 0)
 		return (0);
 	setup_map(&map);
-	ft_checkmap(argv, &map);
+	ft_check(argv, &map);
 	return (0);
 }
 

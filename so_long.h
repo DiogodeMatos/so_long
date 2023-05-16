@@ -31,5 +31,6 @@ typedef struct s_map
 }								t_map;
 
 int	ft_checkmap(char **argv, t_map *map);
+int ft_check(char **argv, t_map *map);
 
 # endif

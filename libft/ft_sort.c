@@ -14,9 +14,6 @@
 
 void	ft_sort2(t_stack *stack_a)
 {
-	int	a;
-
-	a = 0;
 	sa(stack_a);
 }
 
