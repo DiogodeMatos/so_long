@@ -64,10 +64,10 @@ int ft_checkobjects(t_map *map)
 {
   if (map->collectible < 1)
     return (ft_printf("%s", "Error\nNo collectibles\n"));
-  if (map->exit < 1)
-    return (ft_printf("%s", "Error\nNo exit\n"));
+  if (map->exit != 1)
+    return (ft_printf("%s", "Error\nNo exit or many exits\n"));
   if (map->player != 1)
-    return (ft_printf("%s", "Error\nNo player or too many players\n"));
+    return (ft_printf("%s", "Error\nNo player or many players\n"));
   if (ft_checkwalls(map) != 1)
     return (0);
   return (1);
