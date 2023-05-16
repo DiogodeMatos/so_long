@@ -24,7 +24,7 @@ typedef struct s_map
 	int	wall;
 	int	player;
 	int	exit;
-	int	empty;
+	int	space;
 	int	width;
 	int	height;
 	char	**map;
@@ -32,5 +32,6 @@ typedef struct s_map
 
 int	ft_checkmap(char **argv, t_map *map);
 int ft_check(char **argv, t_map *map);
+int	ft_checkmap2(t_map *map);
 
 # endif

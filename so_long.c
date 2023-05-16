@@ -43,7 +43,7 @@ void setup_map(t_map *map)
 	map->width = 0;
 	map->height = 0;
 	map->player = 0;
-	map->empty = 0;
+	map->space = 0;
 	map->collectible = 0;
 	map->exit= 0;
 	map->wall = 0;

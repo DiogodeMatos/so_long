@@ -12,6 +12,31 @@
 
 #include "so_long.h"
 
+char	**ft_map(char **argv, t_map *map)
+{
+	int		fd;
+	char	*line;
+	int		i;
+
+	i = 0;
+	fd = open(argv[1], O_RDONLY);
+	map->map = malloc(sizeof(char *) * (map->height + 1));
+	if (!map->map)
+		return (0);
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		map->map[i] = ft_strdup(line);
+		i++;
+		free(line);
+	}
+	map->map[i] = NULL;
+	close(fd);
+	return (map->map);
+}
+
 int ft_checklineobj(char *line)
 {
 	int	i;
@@ -58,6 +83,12 @@ int	ft_check(char **argv, t_map *map)
 	int	i;
 
 	i = ft_checkmap(argv, map);
+	if (i == 0)
+	{
+		map->map = ft_map(argv, map);
+		if (ft_checkmap2(map) == 1)
+			return (1);
+	}
 	if (i == 1)
 		ft_printf("%s", "Error\nInvalid map\n");
 	if (i == 2)
