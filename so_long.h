@@ -27,11 +27,16 @@ typedef struct s_map
 	int	space;
 	int	width;
 	int	height;
+	int	px;
+	int	py;
+	int	cc;
+	int	ec;
 	char	**map;
 }								t_map;
 
 int	ft_checkmap(char **argv, t_map *map);
 int ft_check(char **argv, t_map *map);
 int	ft_checkmap2(t_map *map);
+int	ft_checkmap3(t_map *map);
 
 # endif

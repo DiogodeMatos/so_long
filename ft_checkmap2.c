@@ -68,6 +68,7 @@ int ft_checkobjects(t_map *map)
     return (ft_printf("%s", "Error\nNo exit or many exits\n"));
   if (map->player != 1)
     return (ft_printf("%s", "Error\nNo player or many players\n"));
+  //ft_printf("collectibles = %d\n", map->collectible);
   if (ft_checkwalls(map) != 1)
     return (0);
   return (1);
@@ -101,12 +102,13 @@ int ft_checkwidth(t_map *map)
 
 int ft_checkmap2(t_map *map)
 {
+  //ft_printf("Porto\n");
   ft_countobjects(map);
+  //ft_printf("Porto\n");
   if (ft_checkwidth(map) != 1)
     return (0);
-  if (ft_checkobjects(map) == 1)
-  {
-    printf("Error\nPorto\n");
-  }
-  return (0);
+  //ft_printf("Porto\n");
+  if (ft_checkobjects(map) != 1)
+    return (0);
+  return (1);
 }

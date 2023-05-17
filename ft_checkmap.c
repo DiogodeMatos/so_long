@@ -87,7 +87,10 @@ int	ft_check(char **argv, t_map *map)
 	{
 		map->map = ft_map(argv, map);
 		if (ft_checkmap2(map) == 1)
-			return (1);
+		{
+			if (ft_checkmap3(map) == 1)
+				return (ft_printf("%s", "Error\nPorto\n"));
+		}
 	}
 	if (i == 1)
 		ft_printf("%s", "Error\nInvalid map\n");

@@ -47,11 +47,16 @@ void setup_map(t_map *map)
 	map->collectible = 0;
 	map->exit= 0;
 	map->wall = 0;
+	map->px = 0;
+	map->py = 0;
+	map->ec = 0;
+	map->cc = 0;
 }
 
 int	main(int argc, char **argv)
 {
 	t_map	map;
+	static int i;
 
 	if (argc != 2)
 		return (ft_printf("%s", "Error\nInvalid number of arguments\n"));
@@ -59,6 +64,12 @@ int	main(int argc, char **argv)
 		return (0);
 	setup_map(&map);
 	ft_check(argv, &map);
+	while (i < map.height)
+	{
+		free(map.map[i]);
+		i++;
+	}
+	free(map.map);
 	return (0);
 }
 
