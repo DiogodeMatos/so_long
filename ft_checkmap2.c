@@ -102,12 +102,9 @@ int ft_checkwidth(t_map *map)
 
 int ft_checkmap2(t_map *map)
 {
-  //ft_printf("Porto\n");
   ft_countobjects(map);
-  //ft_printf("Porto\n");
   if (ft_checkwidth(map) != 1)
     return (0);
-  //ft_printf("Porto\n");
   if (ft_checkobjects(map) != 1)
     return (0);
   return (1);

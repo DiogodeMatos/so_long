@@ -38,5 +38,6 @@ int	ft_checkmap(char **argv, t_map *map);
 int ft_check(char **argv, t_map *map);
 int	ft_checkmap2(t_map *map);
 int	ft_checkmap3(t_map *map);
+int	ft_startgame(t_map *map);
 
 # endif

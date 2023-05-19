@@ -63,7 +63,8 @@ int	main(int argc, char **argv)
 	if (ft_checkber(argv) == 0)
 		return (0);
 	setup_map(&map);
-	ft_check(argv, &map);
+	if (ft_check(argv, &map) == 1)
+		ft_startgame(&map);
 	while (i < map.height)
 	{
 		free(map.map[i]);
@@ -75,5 +76,10 @@ int	main(int argc, char **argv)
 
 /*int	main()
 {
-	ft_printf("so_long");
+	void	*mlx;
+	void	*mlx_win;
+
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	mlx_loop(mlx);
 }*/
