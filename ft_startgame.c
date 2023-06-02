@@ -28,6 +28,24 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+void	print_map(t_map *map)
+{
+	int	i;
+	int	j;
+	i = 0;
+	while (i < map->height)
+	{
+		j = 0;
+		while (j < map->width+1)
+		{
+			ft_printf("%c", map->map[i][j]);
+			j++;
+		}
+		ft_printf("\n");
+		i++;
+	}
+}
+
 int ft_startgame(t_map *map)
 {
     void	*mlx;
@@ -39,29 +57,38 @@ int ft_startgame(t_map *map)
 	char element;
 
     mlx = mlx_init();
-	//mlx_win = mlx_new_window(mlx, (map->width * 32), (map->height * 32), "Monopoly");
-	mlx_win = mlx_new_window(mlx, 500, 500, "Monopoly");
-	printf("%s", "gfd");
-	map->wall_img = mlx_xpm_file_to_image(mlx, "./images/ramen.xpm", &map->wid, &map->hei);
-	map->player_img = mlx_xpm_file_to_image(mlx, "./images/ramen.xpm", &map->wid, &map->hei);
+	mlx_win = mlx_new_window(mlx, (map->width * 64), (map->height * 64), "Monopoly");
+	//mlx_win = mlx_new_window(mlx, 500, 500, "Monopoly");
+	map->wall_img = mlx_xpm_file_to_image(mlx, "./images/wall.xpm", &map->wid, &map->hei);
+	map->floor_img = mlx_xpm_file_to_image(mlx, "./images/empty.xpm", &map->wid, &map->hei);
+	map->player_img = mlx_xpm_file_to_image(mlx, "./images/player.xpm", &map->wid, &map->hei);
+	map->collectible_img = mlx_xpm_file_to_image(mlx, "./images/collect.xpm", &map->wid, &map->hei);
+	map->exit_img = mlx_xpm_file_to_image(mlx, "./images/exit.xpm", &map->wid, &map->hei);
 	if (map->wall_img == NULL)
 	{
 		exit(EXIT_FAILURE);
 	}
+	print_map(map);
 	i = 0;
 	while(i < map->height)
 	{
 		j = 0;
-		while (j <= map->width)
+		while (j < map->width)
 		{
-			rx = j * 32;
-			ry = i * 32;
+			rx = j * 64;
+			ry = i * 64;
 
 			element = map->map[i][j];
-			if (element == '1')
+			if ( map->map[i][j] == '1')
 				mlx_put_image_to_window(mlx, mlx_win, map->wall_img, rx, ry);
-			else if (element == 'P')
+			else if ( map->map[i][j] == 'X')
+				mlx_put_image_to_window(mlx, mlx_win, map->floor_img, rx, ry);
+			else if ( map->map[i][j] == 'P')
 				mlx_put_image_to_window(mlx, mlx_win, map->player_img, rx, ry);
+			else if ( map->map[i][j] == 'C')
+				mlx_put_image_to_window(mlx, mlx_win, map->collectible_img, rx, ry);
+			else if ( map->map[i][j] == 'E')
+				mlx_put_image_to_window(mlx, mlx_win, map->exit_img, rx, ry);
 			j++;
 		}
 		i++;
