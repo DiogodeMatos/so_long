@@ -32,6 +32,9 @@ typedef struct s_map
 	int	cc;
 	int	ec;
 	char	**map;
+	void	*wall_img;
+	int		hei;
+	int		wid;
 }								t_map;
 
 int	ft_checkmap(char **argv, t_map *map);
