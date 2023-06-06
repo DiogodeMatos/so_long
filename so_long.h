@@ -32,7 +32,12 @@ typedef struct s_map
 	int	cc;
 	int	ec;
 	char	**map;
+	char	**map_check;
 	void	*wall_img;
+	void	*floor_img;
+	void	*player_img;
+	void	*collectible_img;
+	void	*exit_img;
 	int		hei;
 	int		wid;
 }								t_map;

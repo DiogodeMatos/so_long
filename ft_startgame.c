@@ -20,14 +20,6 @@ typedef struct	s_data {
 	int		endian;
 }			t_data;
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
-
 void	print_map(t_map *map)
 {
 	int	i;
@@ -58,12 +50,11 @@ int ft_startgame(t_map *map)
 
     mlx = mlx_init();
 	mlx_win = mlx_new_window(mlx, (map->width * 64), (map->height * 64), "Monopoly");
-	//mlx_win = mlx_new_window(mlx, 500, 500, "Monopoly");
-	map->wall_img = mlx_xpm_file_to_image(mlx, "./images/wall.xpm", &map->wid, &map->hei);
-	map->floor_img = mlx_xpm_file_to_image(mlx, "./images/empty.xpm", &map->wid, &map->hei);
-	map->player_img = mlx_xpm_file_to_image(mlx, "./images/player.xpm", &map->wid, &map->hei);
-	map->collectible_img = mlx_xpm_file_to_image(mlx, "./images/collect.xpm", &map->wid, &map->hei);
-	map->exit_img = mlx_xpm_file_to_image(mlx, "./images/exit.xpm", &map->wid, &map->hei);
+	map->wall_img = mlx_xpm_file_to_image(mlx, "./images/wall4.xpm", &map->wid, &map->hei);
+	//map->floor_img = mlx_xpm_file_to_image(mlx, "./images/empty.xpm", &map->wid, &map->hei);
+	map->player_img = mlx_xpm_file_to_image(mlx, "./images/smile.xpm", &map->wid, &map->hei);
+	map->collectible_img = mlx_xpm_file_to_image(mlx, "./images/sun.xpm", &map->wid, &map->hei);
+	map->exit_img = mlx_xpm_file_to_image(mlx, "./images/exit1.xpm", &map->wid, &map->hei);
 	if (map->wall_img == NULL)
 	{
 		exit(EXIT_FAILURE);
@@ -81,8 +72,8 @@ int ft_startgame(t_map *map)
 			element = map->map[i][j];
 			if ( map->map[i][j] == '1')
 				mlx_put_image_to_window(mlx, mlx_win, map->wall_img, rx, ry);
-			else if ( map->map[i][j] == 'X')
-				mlx_put_image_to_window(mlx, mlx_win, map->floor_img, rx, ry);
+			//else if ( map->map[i][j] == '0')
+				//mlx_put_image_to_window(mlx, mlx_win, map->floor_img, rx, ry);
 			else if ( map->map[i][j] == 'P')
 				mlx_put_image_to_window(mlx, mlx_win, map->player_img, rx, ry);
 			else if ( map->map[i][j] == 'C')

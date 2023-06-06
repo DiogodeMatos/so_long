@@ -40,6 +40,7 @@ int ft_checkber(char **argv)
 void setup_map(t_map *map)
 {
 	map->map = NULL;
+	map->map_check = NULL;
 	map->width = 0;
 	map->height = 0;
 	map->player = 0;
@@ -51,6 +52,8 @@ void setup_map(t_map *map)
 	map->py = 0;
 	map->ec = 0;
 	map->cc = 0;
+	map->hei = 32;
+	map->wid = 32;
 }
 
 int	main(int argc, char **argv)

@@ -14,13 +14,13 @@
 
 int	ft_checkpath(t_map *map, int x, int y)
 {
-	if (map->map[y][x] == '1' || map->map[y][x] == 'X')
+	if (map->map_check[y][x] == '1' || map->map_check[y][x] == 'X')
 		return (1);
-	if (map->map[y][x] == 'E')
+	if (map->map_check[y][x] == 'E')
 		map->ec++;
-	if (map->map[y][x] == 'C')
+	if (map->map_check[y][x] == 'C')
 		map->cc++;
-	map->map[y][x] = 'X';
+	map->map_check[y][x] = 'X';
 	ft_checkpath(map, x + 1, y);
 	ft_checkpath(map, x - 1, y);
 	ft_checkpath(map, x, y + 1);
@@ -57,7 +57,6 @@ int ft_checkmap3(t_map *map)
 	ft_printf("px = %d\n", map->px);
 	ft_printf("py = %d\n", map->py);
 	ft_checkpath(map, map->px, map->py);
-	ft_printf("Porto\n");
 	if (map->ec == 1 || map->cc == map->collectible)
 		return (1);
 	return (ft_printf("%s", "Error\nInvalid Path\n"));

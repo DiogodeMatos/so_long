@@ -37,6 +37,31 @@ char	**ft_map(char **argv, t_map *map)
 	return (map->map);
 }
 
+char	**ft_mapcheck(char **argv, t_map *map)
+{
+	int		fd;
+	char	*line;
+	int		i;
+
+	i = 0;
+	fd = open(argv[1], O_RDONLY);
+	map->map_check = malloc(sizeof(char *) * (map->height + 1));
+	if (!map->map_check)
+		return (0);
+	while (1)
+	{
+		line = get_next_line(fd);
+		if (!line)
+			break ;
+		map->map_check[i] = ft_strdup(line);
+		i++;
+		free(line);
+	}
+	map->map_check[i] = NULL;
+	close(fd);
+	return (map->map_check);
+}
+
 int ft_checklineobj(char *line)
 {
 	int	i;
@@ -86,6 +111,7 @@ int	ft_check(char **argv, t_map *map)
 	if (i == 0)
 	{
 		map->map = ft_map(argv, map);
+		map->map_check= ft_mapcheck(argv, map);
 		if (ft_checkmap2(map) == 1)
 		{
 			if (ft_checkmap3(map) == 1)
