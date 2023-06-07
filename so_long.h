@@ -20,11 +20,11 @@
 
 typedef struct s_map
 {
-	int	collectible;
-	int	wall;
-	int	player;
-	int	exit;
-	int	space;
+	int	collectible;				// coletavel	
+	int	wall;					// parede
+	int	player;				// jogador
+	int	exit;				// saida
+	//int	space;			// espaco vazio
 	int	width;
 	int	height;
 	int	px;
@@ -40,6 +40,8 @@ typedef struct s_map
 	void	*exit_img;
 	int		hei;
 	int		wid;
+	void	*mlx;
+	void	*mlx_win;
 }								t_map;
 
 int	ft_checkmap(char **argv, t_map *map);

@@ -12,14 +12,6 @@
 
 #include "so_long.h"
 
-typedef struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}			t_data;
-
 /*void	print_map(t_map *map)
 {
 	int	i;
@@ -70,14 +62,18 @@ void	ft_showimg(t_map *map)
 	}
 }
 
+int	ft_keypress(int keysym, t_map *map)
+{
+	if (keysym == 65307)
+	{
+		mlx_destroy_window(map->mlx, map->mlx_win);
+		exit(0);
+	}
+	return (0);
+}
+
 int ft_startgame(t_map *map)
 {
-	//int	i;
-	//int	j;
-	//int	rx;
-	//int	ry;
-	//char element;
-
 	map->mlx = mlx_init();
 	map->mlx_win = mlx_new_window(map->mlx, ((map->width + 1) * 64), (map->height * 64), "Monopoly");
 	map->wall_img = mlx_xpm_file_to_image(map->mlx, "./images/wall4.xpm", &map->wid, &map->hei);
@@ -91,30 +87,7 @@ int ft_startgame(t_map *map)
 	}
 	//print_map(map);
 	ft_showimg(map);
-	/*i = 0;
-	while(i < map->height)
-	{
-		j = 0;
-		while (j < map->width)
-		{
-			rx = j * 64;
-			ry = i * 64;
-
-			element = map->map[i][j];
-			if ( map->map[i][j] == '1')
-				mlx_put_image_to_window(mlx, mlx_win, map->wall_img, rx, ry);
-			//else if ( map->map[i][j] == '0')
-				//mlx_put_image_to_window(mlx, mlx_win, map->floor_img, rx, ry);
-			else if ( map->map[i][j] == 'P')
-				mlx_put_image_to_window(mlx, mlx_win, map->player_img, rx, ry);
-			else if ( map->map[i][j] == 'C')
-				mlx_put_image_to_window(mlx, mlx_win, map->collectible_img, rx, ry);
-			else if ( map->map[i][j] == 'E')
-				mlx_put_image_to_window(mlx, mlx_win, map->exit_img, rx, ry);
-			j++;
-		}
-		i++;
-	}*/
+	mlx_hook(map->mlx_win, KeyPress, KeyPressMask, &ft_keypress, map); 
 	mlx_loop(map->mlx);
 	return (0);
 }
