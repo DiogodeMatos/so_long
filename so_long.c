@@ -44,7 +44,7 @@ void setup_map(t_map *map)
 	map->width = 0;
 	map->height = 0;
 	map->player = 0;
-	map->space = 0;
+	//map->space = 0;
 	map->collectible = 0;
 	map->exit= 0;
 	map->wall = 0;
@@ -54,12 +54,15 @@ void setup_map(t_map *map)
 	map->cc = 0;
 	map->hei = 32;
 	map->wid = 32;
+	map->mlx = NULL;
+	map->mlx_win = NULL;
+	map->size = 64;
 }
 
 int	main(int argc, char **argv)
 {
 	t_map	map;
-	static int i;
+	//static int i;
 
 	if (argc != 2)
 		return (ft_printf("%s", "Error\nInvalid number of arguments\n"));
@@ -68,12 +71,7 @@ int	main(int argc, char **argv)
 	setup_map(&map);
 	if (ft_check(argv, &map) == 1)
 		ft_startgame(&map);
-	while (i < map.height)
-	{
-		free(map.map[i]);
-		i++;
-	}
-	free(map.map);
+	ft_freemap(&map);
 	return (0);
 }
 

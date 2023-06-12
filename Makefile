@@ -1,6 +1,6 @@
 NAME = so_long
 
-SRC = so_long.c ft_check.c ft_checkmap2.c ft_checkmap3.c ft_startgame.c
+SRC = so_long.c ft_check.c ft_checkmap2.c ft_checkmap3.c ft_startgame.c ft_freemap.c ft_checkmove.c
 	
 CC = cc -g
 RM = rm -rf

@@ -62,15 +62,16 @@ char	**ft_mapcheck(char **argv, t_map *map)
 	return (map->map_check);
 }
 
-int ft_checklineobj(char *line)
+int	ft_checklineobj(char *line)
 {
 	int	i;
 
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] != '1' && line[i] != '0' && line[i] != 'C' && line[i] != 'E' && line[i] != 'P' && line[i] != '\n')
-				return (1);
+		if (line[i] != '1' && line[i] != '0' && line[i] != 'C'
+			&& line[i] != 'E' && line[i] != 'P' && line[i] != '\n')
+			return (1);
 		i++;
 	}
 	return (0);
@@ -111,7 +112,7 @@ int	ft_check(char **argv, t_map *map)
 	if (i == 0)
 	{
 		map->map = ft_map(argv, map);
-		map->map_check= ft_mapcheck(argv, map);
+		map->map_check = ft_mapcheck(argv, map);
 		if (ft_checkmap2(map) == 1)
 		{
 			if (ft_checkmap3(map) == 1)

@@ -16,10 +16,14 @@ int	ft_checkpath(t_map *map, int x, int y)
 {
 	if (map->map_check[y][x] == '1' || map->map_check[y][x] == 'X')
 		return (1);
-	if (map->map_check[y][x] == 'E')
-		map->ec++;
 	if (map->map_check[y][x] == 'C')
 		map->cc++;
+	if (map->map_check[y][x] == 'E')
+	{
+		if (map->cc != map->collectible)
+			return (1);
+		map->ec++;
+	}
 	map->map_check[y][x] = 'X';
 	ft_checkpath(map, x + 1, y);
 	ft_checkpath(map, x - 1, y);

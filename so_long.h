@@ -42,6 +42,7 @@ typedef struct s_map
 	int		wid;
 	void	*mlx;
 	void	*mlx_win;
+	int	size;
 }								t_map;
 
 int	ft_checkmap(char **argv, t_map *map);
@@ -49,5 +50,8 @@ int ft_check(char **argv, t_map *map);
 int	ft_checkmap2(t_map *map);
 int	ft_checkmap3(t_map *map);
 int	ft_startgame(t_map *map);
+void ft_freemap(t_map *map);
+int	ft_checkmove(t_map *map, char a, int x, int y);
+int	ft_game_destroy(t_map *map);
 
 # endif
