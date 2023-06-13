@@ -19,10 +19,13 @@ void	ft_freemap(t_map *map)
 	i = 0;
 	while (i < map->height)
 	{
-		free(map->map[i]);
-		free(map->map_check[i]);
+		if (map->map)
+			free(map->map[i]);
+		if (map->map_check)
+			free(map->map_check[i]);
 		i++;
 	}
 	free(map->map);
-	free(map->map_check);
+	if (map->map_check)
+		free(map->map_check);
 }

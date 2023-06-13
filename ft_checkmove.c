@@ -12,71 +12,79 @@
 
 #include "so_long.h"
 
-void    ft_move(t_map *map, char a)
+void	ft_movew(t_map *map)
 {
-    if (a == 'w')
-    {
-        mlx_put_image_to_window(map->mlx, map->mlx_win, map->floor_img, map->px * map->size, map->py * map->size);
-        map->map[map->py][map->px] = '0';
-        map->py--;
-        if (map->map[map->py][map->px] == 'C')
-            map->collectible--;
-        if (map->map[map->py][map->px] == 'E')
-            ft_game_destroy(map);
-        map->map[map->py][map->px] = 'P';
-        mlx_put_image_to_window(map->mlx, map->mlx_win, map->player_img, map->px * map->size, map->py * map->size);
-    }
-    else if (a == 's')
-    {
-        mlx_put_image_to_window(map->mlx, map->mlx_win, map->floor_img, map->px * map->size, map->py * map->size);
-        map->map[map->py][map->px] = '0';
-        map->py++;
-        if (map->map[map->py][map->px] == 'C')
-            map->collectible--;
-        if (map->map[map->py][map->px] == 'E')
-            ft_game_destroy(map);
-        map->map[map->py][map->px] = 'P';
-        mlx_put_image_to_window(map->mlx, map->mlx_win, map->player_img, map->px * map->size, map->py * map->size);
-    }
+	mlx_put_image_to_window(map->mlx, map->mlx_win,
+		map->floor_img, map->px * map->size, map->py * map->size);
+	map->map[map->py][map->px] = '0';
+	map->py--;
+	if (map->map[map->py][map->px] == 'C')
+		map->collectible--;
+	if (map->map[map->py][map->px] == 'E')
+		ft_game_destroy(map);
+	map->map[map->py][map->px] = 'P';
+	mlx_put_image_to_window(map->mlx, map->mlx_win,
+		map->player_img, map->px * map->size, map->py * map->size);
 }
 
-void    ft_move2(t_map *map, char a)
+void	ft_moves(t_map *map)
 {
-    if (a == 'a')
-    {
-        mlx_put_image_to_window(map->mlx, map->mlx_win, map->floor_img, map->px * map->size, map->py * map->size);
-        map->map[map->py][map->px] = '0';
-        map->px--;
-        if (map->map[map->py][map->px] == 'C')
-            map->collectible--;
-        if (map->map[map->py][map->px] == 'E')
-            ft_game_destroy(map);
-        map->map[map->py][map->px] = 'P';
-        mlx_put_image_to_window(map->mlx, map->mlx_win, map->player_img, map->px * map->size, map->py * map->size);
-    }
-    else if (a == 'd')
-    {
-        mlx_put_image_to_window(map->mlx, map->mlx_win, map->floor_img, map->px * map->size, map->py * map->size);
-        map->map[map->py][map->px] = '0';
-        map->px++;
-        if (map->map[map->py][map->px] == 'C')
-            map->collectible--;
-        if (map->map[map->py][map->px] == 'E')
-            ft_game_destroy(map);
-        map->map[map->py][map->px] = 'P';
-        mlx_put_image_to_window(map->mlx, map->mlx_win, map->player_img, map->px * map->size, map->py * map->size);
-    }
+	mlx_put_image_to_window(map->mlx, map->mlx_win,
+		map->floor_img, map->px * map->size, map->py * map->size);
+	map->map[map->py][map->px] = '0';
+	map->py++;
+	if (map->map[map->py][map->px] == 'C')
+		map->collectible--;
+	if (map->map[map->py][map->px] == 'E')
+		ft_game_destroy(map);
+	map->map[map->py][map->px] = 'P';
+	mlx_put_image_to_window(map->mlx, map->mlx_win,
+		map->player_img, map->px * map->size, map->py * map->size);
 }
 
-int ft_checkmove(t_map *map, char a, int x, int y)
+void	ft_movea(t_map *map)
 {
-    if (map->map[y][x] == '1')
-        return (0);
-    if (map->map[y][x] == 'E' && map->collectible != 0)
-        return (0);
-    if ((a == 'w') || (a == 's'))
-        ft_move(map, a);
-    if ((a == 'a') || (a == 'd'))
-        ft_move2(map, a);
-    return (1);
+	mlx_put_image_to_window(map->mlx, map->mlx_win,
+		map->floor_img, map->px * map->size, map->py * map->size);
+	map->map[map->py][map->px] = '0';
+	map->px--;
+	if (map->map[map->py][map->px] == 'C')
+		map->collectible--;
+	if (map->map[map->py][map->px] == 'E')
+		ft_game_destroy(map);
+	map->map[map->py][map->px] = 'P';
+	mlx_put_image_to_window(map->mlx, map->mlx_win,
+		map->player_img, map->px * map->size, map->py * map->size);
+}
+
+void	ft_moved(t_map *map)
+{
+	mlx_put_image_to_window(map->mlx, map->mlx_win,
+		map->floor_img, map->px * map->size, map->py * map->size);
+	map->map[map->py][map->px] = '0';
+	map->px++;
+	if (map->map[map->py][map->px] == 'C')
+		map->collectible--;
+	if (map->map[map->py][map->px] == 'E')
+		ft_game_destroy(map);
+	map->map[map->py][map->px] = 'P';
+	mlx_put_image_to_window(map->mlx, map->mlx_win,
+		map->player_img, map->px * map->size, map->py * map->size);
+}
+
+int	ft_checkmove(t_map *map, char a, int x, int y)
+{
+	if (map->map[y][x] == '1')
+		return (0);
+	if (map->map[y][x] == 'E' && map->collectible != 0)
+		return (0);
+	if (a == 'w')
+		ft_movew(map);
+	if (a == 's')
+		ft_moves(map);
+	if (a == 'a')
+		ft_movea(map);
+	if (a == 'd')
+		ft_moved(map);
+	return (1);
 }

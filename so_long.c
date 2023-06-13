@@ -12,11 +12,11 @@
 
 #include "so_long.h"
 
-int ft_checkber(char **argv)
+int	ft_checkber(char **argv)
 {
 	static int	a;
-	char	*str;
-	int	b;
+	char		*str;
+	int			b;
 
 	str = ".ber";
 	while (argv[1][a])
@@ -24,12 +24,13 @@ int ft_checkber(char **argv)
 		b = 0;
 		while (argv[1][a] == str[b])
 		{
-				a++;
-				b++;
-				if (argv[1][a] == '\0' && str[b] == '\0')
-					return (1);
-				else if ((argv[1][a] == '\0' && str[b] != '\0') || (argv[1][a] != '\0' && str[b] == '\0'))
-					a--;
+			a++;
+			b++;
+			if (argv[1][a] == '\0' && str[b] == '\0')
+				return (1);
+			else if ((argv[1][a] == '\0' && str[b] != '\0')
+				|| (argv[1][a] != '\0' && str[b] == '\0'))
+				a--;
 		}
 		a++;
 	}
@@ -37,16 +38,15 @@ int ft_checkber(char **argv)
 	return (0);
 }
 
-void setup_map(t_map *map)
+void	setup_map(t_map *map)
 {
 	map->map = NULL;
 	map->map_check = NULL;
 	map->width = 0;
 	map->height = 0;
 	map->player = 0;
-	//map->space = 0;
 	map->collectible = 0;
-	map->exit= 0;
+	map->exit = 0;
 	map->wall = 0;
 	map->px = 0;
 	map->py = 0;
@@ -62,7 +62,6 @@ void setup_map(t_map *map)
 int	main(int argc, char **argv)
 {
 	t_map	map;
-	//static int i;
 
 	if (argc != 2)
 		return (ft_printf("%s", "Error\nInvalid number of arguments\n"));
@@ -74,13 +73,3 @@ int	main(int argc, char **argv)
 	ft_freemap(&map);
 	return (0);
 }
-
-/*int	main()
-{
-	void	*mlx;
-	void	*mlx_win;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	mlx_loop(mlx);
-}*/

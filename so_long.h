@@ -20,17 +20,16 @@
 
 typedef struct s_map
 {
-	int	collectible;				// coletavel	
-	int	wall;					// parede
-	int	player;				// jogador
-	int	exit;				// saida
-	//int	space;			// espaco vazio
-	int	width;
-	int	height;
-	int	px;
-	int	py;
-	int	cc;
-	int	ec;
+	int		collectible;
+	int		wall;
+	int		player;
+	int		exit;
+	int		width;
+	int		height;
+	int		px;
+	int		py;
+	int		cc;
+	int		ec;
 	char	**map;
 	char	**map_check;
 	void	*wall_img;
@@ -42,16 +41,16 @@ typedef struct s_map
 	int		wid;
 	void	*mlx;
 	void	*mlx_win;
-	int	size;
+	int		size;
 }								t_map;
 
-int	ft_checkmap(char **argv, t_map *map);
-int ft_check(char **argv, t_map *map);
-int	ft_checkmap2(t_map *map);
-int	ft_checkmap3(t_map *map);
-int	ft_startgame(t_map *map);
-void ft_freemap(t_map *map);
-int	ft_checkmove(t_map *map, char a, int x, int y);
-int	ft_game_destroy(t_map *map);
+int		ft_checkmap(char **argv, t_map *map);
+int		ft_check(char **argv, t_map *map);
+int		ft_checkmap2(t_map *map);
+int		ft_checkmap3(t_map *map);
+int		ft_startgame(t_map *map);
+void	ft_freemap(t_map *map);
+int		ft_checkmove(t_map *map, char a, int x, int y);
+int		ft_game_destroy(t_map *map);
 
-# endif
+#endif

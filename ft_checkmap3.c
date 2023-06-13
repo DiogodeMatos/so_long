@@ -55,7 +55,7 @@ void	ft_checkppos(t_map *map)
 	}
 }
 
-int ft_checkmap3(t_map *map)
+int	ft_checkmap3(t_map *map)
 {
 	ft_checkppos(map);
 	ft_printf("px = %d\n", map->px);
