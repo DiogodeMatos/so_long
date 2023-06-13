@@ -57,6 +57,7 @@ void	setup_map(t_map *map)
 	map->mlx = NULL;
 	map->mlx_win = NULL;
 	map->size = 64;
+	map->moves = 0;
 }
 
 int	main(int argc, char **argv)

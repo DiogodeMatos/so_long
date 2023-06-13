@@ -21,10 +21,17 @@ void	ft_movew(t_map *map)
 	if (map->map[map->py][map->px] == 'C')
 		map->collectible--;
 	if (map->map[map->py][map->px] == 'E')
+	{
+		map->moves++;
+		ft_printf("Player Moves: %d\n", map->moves);
+		ft_printf("You Win!\n");
 		ft_game_destroy(map);
+	}
 	map->map[map->py][map->px] = 'P';
 	mlx_put_image_to_window(map->mlx, map->mlx_win,
 		map->player_img, map->px * map->size, map->py * map->size);
+	map->moves++;
+	ft_printf("Player Moves: %d\n", map->moves);
 }
 
 void	ft_moves(t_map *map)
@@ -36,10 +43,17 @@ void	ft_moves(t_map *map)
 	if (map->map[map->py][map->px] == 'C')
 		map->collectible--;
 	if (map->map[map->py][map->px] == 'E')
+	{
+		map->moves++;
+		ft_printf("Player Moves: %d\n", map->moves);
+		ft_printf("You Win!\n");
 		ft_game_destroy(map);
+	}
 	map->map[map->py][map->px] = 'P';
 	mlx_put_image_to_window(map->mlx, map->mlx_win,
 		map->player_img, map->px * map->size, map->py * map->size);
+	map->moves++;
+	ft_printf("Player Moves: %d\n", map->moves);
 }
 
 void	ft_movea(t_map *map)
@@ -51,10 +65,17 @@ void	ft_movea(t_map *map)
 	if (map->map[map->py][map->px] == 'C')
 		map->collectible--;
 	if (map->map[map->py][map->px] == 'E')
+	{
+		map->moves++;
+		ft_printf("Player Moves: %d\n", map->moves);
+		ft_printf("You Win!\n");
 		ft_game_destroy(map);
+	}
 	map->map[map->py][map->px] = 'P';
 	mlx_put_image_to_window(map->mlx, map->mlx_win,
 		map->player_img, map->px * map->size, map->py * map->size);
+	map->moves++;
+	ft_printf("Player Moves: %d\n", map->moves);
 }
 
 void	ft_moved(t_map *map)
@@ -66,10 +87,17 @@ void	ft_moved(t_map *map)
 	if (map->map[map->py][map->px] == 'C')
 		map->collectible--;
 	if (map->map[map->py][map->px] == 'E')
+	{
+		map->moves++;
+		ft_printf("Player Moves: %d\n", map->moves);
+		ft_printf("You Win!\n");
 		ft_game_destroy(map);
+	}
 	map->map[map->py][map->px] = 'P';
 	mlx_put_image_to_window(map->mlx, map->mlx_win,
 		map->player_img, map->px * map->size, map->py * map->size);
+	map->moves++;
+	ft_printf("Player Moves: %d\n", map->moves);
 }
 
 int	ft_checkmove(t_map *map, char a, int x, int y)

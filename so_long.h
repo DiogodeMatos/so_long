@@ -42,6 +42,7 @@ typedef struct s_map
 	void	*mlx;
 	void	*mlx_win;
 	int		size;
+	int		moves;
 }								t_map;
 
 int		ft_checkmap(char **argv, t_map *map);
