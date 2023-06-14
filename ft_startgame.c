@@ -64,6 +64,7 @@ int	ft_game_destroy(t_map *map)
 	mlx_destroy_image(map->mlx, map->player_img);
 	mlx_destroy_image(map->mlx, map->collectible_img);
 	mlx_destroy_image(map->mlx, map->exit_img);
+	mlx_destroy_image(map->mlx, map->exitwin_img);
 	mlx_destroy_image(map->mlx, map->floor_img);
 	mlx_destroy_window(map->mlx, map->mlx_win);
 	mlx_destroy_display(map->mlx);
@@ -100,12 +101,10 @@ int	ft_startgame(t_map *map)
 			"./images/player.xpm", &map->wid, &map->hei);
 	map->collectible_img = mlx_xpm_file_to_image(map->mlx,
 			"./images/collectible.xpm", &map->wid, &map->hei);
-	map->exit_img = mlx_xpm_file_to_image(map->mlx, "./images/exit1.xpm",
+	map->exit_img = mlx_xpm_file_to_image(map->mlx, "./images/exit.xpm",
 			&map->wid, &map->hei);
-	if (map->wall_img == NULL)
-	{
-		exit(EXIT_FAILURE);
-	}
+	map->exitwin_img = mlx_xpm_file_to_image(map->mlx, "./images/exit1.xpm",
+			&map->wid, &map->hei);
 	ft_showimg(map);
 	mlx_hook(map->mlx_win, KeyPress, KeyPressMask, &ft_keypress, map);
 	mlx_hook(map->mlx_win, DestroyNotify,

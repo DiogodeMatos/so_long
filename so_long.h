@@ -30,6 +30,8 @@ typedef struct s_map
 	int		py;
 	int		cc;
 	int		ec;
+	int		exitx;
+	int		exity;
 	char	**map;
 	char	**map_check;
 	void	*wall_img;
@@ -37,6 +39,7 @@ typedef struct s_map
 	void	*player_img;
 	void	*collectible_img;
 	void	*exit_img;
+	void	*exitwin_img;
 	int		hei;
 	int		wid;
 	void	*mlx;

@@ -47,7 +47,11 @@ void	ft_checkppos(t_map *map)
 			{
 				map->px = x;
 				map->py = y;
-				return ;
+			}
+			if (map->map[y][x] == 'E')
+			{
+				map->exitx = x;
+				map->exity = y;
 			}
 			x++;
 		}
@@ -58,8 +62,6 @@ void	ft_checkppos(t_map *map)
 int	ft_checkmap3(t_map *map)
 {
 	ft_checkppos(map);
-	ft_printf("px = %d\n", map->px);
-	ft_printf("py = %d\n", map->py);
 	ft_checkpath(map, map->px, map->py);
 	if (map->ec == 1 || map->cc == map->collectible)
 		return (1);

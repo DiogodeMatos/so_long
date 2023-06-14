@@ -19,7 +19,12 @@ void	ft_movew(t_map *map)
 	map->map[map->py][map->px] = '0';
 	map->py--;
 	if (map->map[map->py][map->px] == 'C')
+	{
 		map->collectible--;
+		if (map->collectible == 0)
+			mlx_put_image_to_window(map->mlx, map->mlx_win,
+				map->exitwin_img, map->exitx * map->size, map->exity * map->size);
+	}
 	if (map->map[map->py][map->px] == 'E')
 	{
 		map->moves++;
@@ -41,7 +46,12 @@ void	ft_moves(t_map *map)
 	map->map[map->py][map->px] = '0';
 	map->py++;
 	if (map->map[map->py][map->px] == 'C')
+	{
 		map->collectible--;
+		if (map->collectible == 0)
+			mlx_put_image_to_window(map->mlx, map->mlx_win,
+				map->exitwin_img, map->exitx * map->size, map->exity * map->size);
+	}
 	if (map->map[map->py][map->px] == 'E')
 	{
 		map->moves++;
@@ -63,7 +73,12 @@ void	ft_movea(t_map *map)
 	map->map[map->py][map->px] = '0';
 	map->px--;
 	if (map->map[map->py][map->px] == 'C')
+	{
 		map->collectible--;
+		if (map->collectible == 0)
+			mlx_put_image_to_window(map->mlx, map->mlx_win,
+				map->exitwin_img, map->exitx * map->size, map->exity * map->size);
+	}
 	if (map->map[map->py][map->px] == 'E')
 	{
 		map->moves++;
@@ -85,7 +100,12 @@ void	ft_moved(t_map *map)
 	map->map[map->py][map->px] = '0';
 	map->px++;
 	if (map->map[map->py][map->px] == 'C')
+	{
 		map->collectible--;
+		if (map->collectible == 0)
+			mlx_put_image_to_window(map->mlx, map->mlx_win,
+				map->exitwin_img, map->exitx * map->size, map->exity * map->size);
+	}
 	if (map->map[map->py][map->px] == 'E')
 	{
 		map->moves++;
