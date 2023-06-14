@@ -91,15 +91,15 @@ int	ft_startgame(t_map *map)
 {
 	map->mlx = mlx_init();
 	map->mlx_win = mlx_new_window(map->mlx, ((map->width + 1) * map->size),
-			(map->height * map->size), "Monopoly");
+			(map->height * map->size), "Bananas Slave");
 	map->wall_img = mlx_xpm_file_to_image(map->mlx,
-			"./images/wall4.xpm", &map->wid, &map->hei);
+			"./images/wall.xpm", &map->wid, &map->hei);
 	map->floor_img = mlx_xpm_file_to_image(map->mlx,
-			"./images/empty.xpm", &map->wid, &map->hei);
+			"./images/floor.xpm", &map->wid, &map->hei);
 	map->player_img = mlx_xpm_file_to_image(map->mlx,
-			"./images/smile.xpm", &map->wid, &map->hei);
+			"./images/player.xpm", &map->wid, &map->hei);
 	map->collectible_img = mlx_xpm_file_to_image(map->mlx,
-			"./images/sun.xpm", &map->wid, &map->hei);
+			"./images/collectible.xpm", &map->wid, &map->hei);
 	map->exit_img = mlx_xpm_file_to_image(map->mlx, "./images/exit1.xpm",
 			&map->wid, &map->hei);
 	if (map->wall_img == NULL)
