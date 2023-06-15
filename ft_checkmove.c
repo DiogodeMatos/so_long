@@ -22,8 +22,8 @@ void	ft_movew(t_map *map)
 	{
 		map->collectible--;
 		if (map->collectible == 0)
-			mlx_put_image_to_window(map->mlx, map->mlx_win,
-				map->exitwin_img, map->exitx * map->size, map->exity * map->size);
+			mlx_put_image_to_window(map->mlx, map->mlx_win, map->exitwin_img,
+				map->exitx * map->size, map->exity * map->size);
 	}
 	if (map->map[map->py][map->px] == 'E')
 	{
@@ -49,8 +49,8 @@ void	ft_moves(t_map *map)
 	{
 		map->collectible--;
 		if (map->collectible == 0)
-			mlx_put_image_to_window(map->mlx, map->mlx_win,
-				map->exitwin_img, map->exitx * map->size, map->exity * map->size);
+			mlx_put_image_to_window(map->mlx, map->mlx_win, map->exitwin_img,
+				map->exitx * map->size, map->exity * map->size);
 	}
 	if (map->map[map->py][map->px] == 'E')
 	{
@@ -76,8 +76,8 @@ void	ft_movea(t_map *map)
 	{
 		map->collectible--;
 		if (map->collectible == 0)
-			mlx_put_image_to_window(map->mlx, map->mlx_win,
-				map->exitwin_img, map->exitx * map->size, map->exity * map->size);
+			mlx_put_image_to_window(map->mlx, map->mlx_win, map->exitwin_img,
+				map->exitx * map->size, map->exity * map->size);
 	}
 	if (map->map[map->py][map->px] == 'E')
 	{
@@ -103,8 +103,8 @@ void	ft_moved(t_map *map)
 	{
 		map->collectible--;
 		if (map->collectible == 0)
-			mlx_put_image_to_window(map->mlx, map->mlx_win,
-				map->exitwin_img, map->exitx * map->size, map->exity * map->size);
+			mlx_put_image_to_window(map->mlx, map->mlx_win, map->exitwin_img,
+				map->exitx * map->size, map->exity * map->size);
 	}
 	if (map->map[map->py][map->px] == 'E')
 	{

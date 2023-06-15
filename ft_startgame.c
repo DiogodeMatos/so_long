@@ -94,16 +94,16 @@ int	ft_startgame(t_map *map)
 	map->mlx_win = mlx_new_window(map->mlx, ((map->width + 1) * map->size),
 			(map->height * map->size), "Bananas Slave");
 	map->wall_img = mlx_xpm_file_to_image(map->mlx,
-			"./images/wall.xpm", &map->wid, &map->hei);
+			"./textures/wall.xpm", &map->wid, &map->hei);
 	map->floor_img = mlx_xpm_file_to_image(map->mlx,
-			"./images/floor.xpm", &map->wid, &map->hei);
+			"./textures/floor.xpm", &map->wid, &map->hei);
 	map->player_img = mlx_xpm_file_to_image(map->mlx,
-			"./images/player.xpm", &map->wid, &map->hei);
+			"./textures/player.xpm", &map->wid, &map->hei);
 	map->collectible_img = mlx_xpm_file_to_image(map->mlx,
-			"./images/collectible.xpm", &map->wid, &map->hei);
-	map->exit_img = mlx_xpm_file_to_image(map->mlx, "./images/exit.xpm",
+			"./textures/collectible.xpm", &map->wid, &map->hei);
+	map->exit_img = mlx_xpm_file_to_image(map->mlx, "./textures/exit.xpm",
 			&map->wid, &map->hei);
-	map->exitwin_img = mlx_xpm_file_to_image(map->mlx, "./images/exit1.xpm",
+	map->exitwin_img = mlx_xpm_file_to_image(map->mlx, "./textures/exit1.xpm",
 			&map->wid, &map->hei);
 	ft_showimg(map);
 	mlx_hook(map->mlx_win, KeyPress, KeyPressMask, &ft_keypress, map);
