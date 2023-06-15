@@ -63,7 +63,7 @@ int	ft_checkmap3(t_map *map)
 {
 	ft_checkppos(map);
 	ft_checkpath(map, map->px, map->py);
-	if (map->ec == 1 || map->cc == map->collectible)
+	if (map->ec == 1 && map->cc == map->collectible)
 		return (1);
 	return (ft_printf("%s", "Error\nInvalid Path\n"));
 }
