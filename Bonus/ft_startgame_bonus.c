@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	ft_putimg(t_map *map, char element, int x, int y)
 {
@@ -29,6 +29,9 @@ void	ft_putimg(t_map *map, char element, int x, int y)
 	else if (element == 'E')
 		mlx_put_image_to_window(map->mlx, map->mlx_win,
 			map->exit_img, x * map->size, y * map->size);
+	else if (element == 'D')
+		mlx_put_image_to_window(map->mlx, map->mlx_win,
+			map->enemy_img, x * map->size, y * map->size);
 }
 
 void	ft_showimg(t_map *map)
@@ -54,6 +57,8 @@ void	ft_showimg(t_map *map)
 				ft_putimg(map, element, j, i);
 			else if (map->map[i][j] == 'E')
 				ft_putimg(map, element, j, i);
+			else if (map->map[i][j] == 'D')
+				ft_putimg(map, element, j, i);
 		}
 	}
 }
@@ -77,13 +82,13 @@ int	ft_keypress(int keysym, t_map *map)
 {
 	if (keysym == 65307)
 		ft_game_destroy(map);
-	if (keysym == 119)
+	if ((keysym == 119) || (keysym == 65362))
 		ft_checkmove(map, keysym, map->px, map->py - 1);
-	if (keysym == 115)
+	if ((keysym == 115) || (keysym == 65364))
 		ft_checkmove(map, keysym, map->px, map->py + 1);
-	if (keysym == 97)
+	if ((keysym == 97) || (keysym == 65361))
 		ft_checkmove(map, keysym, map->px - 1, map->py);
-	if (keysym == 100)
+	if ((keysym == 100) || (keysym == 65363))
 		ft_checkmove(map, keysym, map->px + 1, map->py);
 	return (0);
 }
@@ -93,6 +98,7 @@ int	ft_startgame(t_map *map)
 	map->mlx = mlx_init();
 	map->mlx_win = mlx_new_window(map->mlx, ((map->width + 1) * map->size),
 			(map->height * map->size), "Bananas Slave");
+	mlx_string_put(map->mlx, map->mlx_win, 100, 100, 0xFFFFFF, map->counter);
 	map->wall_img = mlx_xpm_file_to_image(map->mlx,
 			"./textures/wall.xpm", &map->wid, &map->hei);
 	map->floor_img = mlx_xpm_file_to_image(map->mlx,
@@ -104,6 +110,8 @@ int	ft_startgame(t_map *map)
 	map->exit_img = mlx_xpm_file_to_image(map->mlx, "./textures/exit.xpm",
 			&map->wid, &map->hei);
 	map->exitwin_img = mlx_xpm_file_to_image(map->mlx, "./textures/exit1.xpm",
+			&map->wid, &map->hei);
+	map->enemy_img = mlx_xpm_file_to_image(map->mlx, "./textures/enemy.xpm",
 			&map->wid, &map->hei);
 	ft_showimg(map);
 	mlx_hook(map->mlx_win, KeyPress, KeyPressMask, &ft_keypress, map);
