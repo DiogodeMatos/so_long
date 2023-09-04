@@ -14,7 +14,7 @@
 
 int	ft_checkpath(t_map *map, int x, int y)
 {
-	if (map->map_check[y][x] == '1' || map->map_check[y][x] == 'X')
+	if (map->map_check[y][x] == '1' || map->map_check[y][x] == 'X' || map->map_check[y][x] == 'D')
 		return (1);
 	if (map->map_check[y][x] == 'C')
 		map->cc++;

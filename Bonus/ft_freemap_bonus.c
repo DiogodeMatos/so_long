@@ -28,4 +28,5 @@ void	ft_freemap(t_map *map)
 	free(map->map);
 	if (map->map_check)
 		free(map->map_check);
+	free(map->counter);
 }

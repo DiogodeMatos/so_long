@@ -71,6 +71,7 @@ int	ft_game_destroy(t_map *map)
 	mlx_destroy_image(map->mlx, map->exit_img);
 	mlx_destroy_image(map->mlx, map->exitwin_img);
 	mlx_destroy_image(map->mlx, map->floor_img);
+	mlx_destroy_image(map->mlx, map->enemy_img);
 	mlx_destroy_window(map->mlx, map->mlx_win);
 	mlx_destroy_display(map->mlx);
 	free(map->mlx);

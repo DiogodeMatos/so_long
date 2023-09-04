@@ -25,11 +25,13 @@ void	ft_movew(t_map *map)
 			mlx_put_image_to_window(map->mlx, map->mlx_win, map->exitwin_img,
 				map->exitx * map->size, map->exity * map->size);
 	}
-	if (map->map[map->py][map->px] == 'E')
+	if (map->map[map->py][map->px] == 'D' || map->map[map->py][map->px] == 'E')
 	{
 		map->moves++;
-		ft_printf("Player Moves: %d\n", map->moves);
-		ft_printf("You Win!\n");
+		if (map->map[map->py][map->px] == 'D')
+			ft_printf("Player Moves: %d\nYou Lost the Bananas!\n", map->moves);
+		else
+			ft_printf("Player Moves: %d\nYou Win!\n", map->moves);
 		ft_game_destroy(map);
 	}
 	map->map[map->py][map->px] = 'P';
@@ -52,11 +54,13 @@ void	ft_moves(t_map *map)
 			mlx_put_image_to_window(map->mlx, map->mlx_win, map->exitwin_img,
 				map->exitx * map->size, map->exity * map->size);
 	}
-	if (map->map[map->py][map->px] == 'E')
+	if (map->map[map->py][map->px] == 'D' || map->map[map->py][map->px] == 'E')
 	{
 		map->moves++;
-		ft_printf("Player Moves: %d\n", map->moves);
-		ft_printf("You Win!\n");
+		if (map->map[map->py][map->px] == 'D')
+			ft_printf("Player Moves: %d\nYou Lost the Bananas!\n", map->moves);
+		else
+			ft_printf("Player Moves: %d\nYou Win!\n", map->moves);
 		ft_game_destroy(map);
 	}
 	map->map[map->py][map->px] = 'P';
@@ -79,11 +83,13 @@ void	ft_movea(t_map *map)
 			mlx_put_image_to_window(map->mlx, map->mlx_win, map->exitwin_img,
 				map->exitx * map->size, map->exity * map->size);
 	}
-	if (map->map[map->py][map->px] == 'E')
+	if (map->map[map->py][map->px] == 'D' || map->map[map->py][map->px] == 'E')
 	{
 		map->moves++;
-		ft_printf("Player Moves: %d\n", map->moves);
-		ft_printf("You Win!\n");
+		if (map->map[map->py][map->px] == 'D')
+			ft_printf("Player Moves: %d\nYou Lost the Bananas!\n", map->moves);
+		else
+			ft_printf("Player Moves: %d\nYou Win!\n", map->moves);
 		ft_game_destroy(map);
 	}
 	map->map[map->py][map->px] = 'P';
@@ -106,11 +112,13 @@ void	ft_moved(t_map *map)
 			mlx_put_image_to_window(map->mlx, map->mlx_win, map->exitwin_img,
 				map->exitx * map->size, map->exity * map->size);
 	}
-	if (map->map[map->py][map->px] == 'E')
+	if (map->map[map->py][map->px] == 'D' || map->map[map->py][map->px] == 'E')
 	{
 		map->moves++;
-		ft_printf("Player Moves: %d\n", map->moves);
-		ft_printf("You Win!\n");
+		if (map->map[map->py][map->px] == 'D')
+			ft_printf("Player Moves: %d\nYou Lost the Bananas!\n", map->moves);
+		else
+			ft_printf("Player Moves: %d\nYou Win!\n", map->moves);
 		ft_game_destroy(map);
 	}
 	map->map[map->py][map->px] = 'P';
