@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_startgame.c                                     :+:      :+:    :+:   */
+/*   ft_startgame_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcarrilh <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dcarrilh <dcarrilh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 09:49:45 by dcarrilh          #+#    #+#             */
-/*   Updated: 2023/05/19 09:50:52 by dcarrilh         ###   ########.fr       */
+/*   Updated: 2023/09/16 19:05:58 by dcarrilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ int	ft_game_destroy(t_map *map)
 	mlx_destroy_image(map->mlx, map->wall_img);
 	mlx_destroy_image(map->mlx, map->player_img);
 	mlx_destroy_image(map->mlx, map->collectible_img);
+	mlx_destroy_image(map->mlx, map->collectible1_img);
+	mlx_destroy_image(map->mlx, map->collectible2_img);
+	mlx_destroy_image(map->mlx, map->collectible3_img);
 	mlx_destroy_image(map->mlx, map->exit_img);
 	mlx_destroy_image(map->mlx, map->exitwin_img);
 	mlx_destroy_image(map->mlx, map->floor_img);
@@ -108,6 +111,12 @@ int	ft_startgame(t_map *map)
 			"./textures/player.xpm", &map->wid, &map->hei);
 	map->collectible_img = mlx_xpm_file_to_image(map->mlx,
 			"./textures/collectible.xpm", &map->wid, &map->hei);
+	map->collectible1_img = mlx_xpm_file_to_image(map->mlx,
+			"./textures/collectible1.xpm", &map->wid, &map->hei);
+	map->collectible2_img = mlx_xpm_file_to_image(map->mlx,
+			"./textures/collectible2.xpm", &map->wid, &map->hei);
+	map->collectible3_img = mlx_xpm_file_to_image(map->mlx,
+			"./textures/collectible3.xpm", &map->wid, &map->hei);
 	map->exit_img = mlx_xpm_file_to_image(map->mlx, "./textures/exit.xpm",
 			&map->wid, &map->hei);
 	map->exitwin_img = mlx_xpm_file_to_image(map->mlx, "./textures/exit1.xpm",
@@ -118,6 +127,7 @@ int	ft_startgame(t_map *map)
 	mlx_hook(map->mlx_win, KeyPress, KeyPressMask, &ft_keypress, map);
 	mlx_hook(map->mlx_win, DestroyNotify,
 		ButtonPressMask, &ft_game_destroy, map);
+	mlx_loop_hook(map->mlx, ft_animations, map);
 	mlx_loop(map->mlx);
 	return (0);
 }

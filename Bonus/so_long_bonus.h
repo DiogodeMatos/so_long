@@ -40,6 +40,9 @@ typedef struct s_map
 	void	*floor_img;
 	void	*player_img;
 	void	*collectible_img;
+	void	*collectible1_img;
+	void	*collectible2_img;
+	void	*collectible3_img;
 	void	*enemy_img;
 	void	*exit_img;
 	void	*exitwin_img;
@@ -63,5 +66,6 @@ void	ft_movew(t_map *map);
 void	ft_moves(t_map *map);
 void	ft_movea(t_map *map);
 void	ft_moved(t_map *map);
+int 	ft_animations(t_map *map);
 
 #endif
