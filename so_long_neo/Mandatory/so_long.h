@@ -6,7 +6,7 @@
 /*   By: dcarrilh <dcarrilh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 11:15:33 by dcarrilh          #+#    #+#             */
-/*   Updated: 2023/09/25 23:34:50 by dcarrilh         ###   ########.fr       */
+/*   Updated: 2023/09/26 16:22:20 by dcarrilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_map
 	int		exitx;
 	int		exity;
 	char	**map;
-	char	**map_check;
+	char	**map_copy;
 	void	*wall_img;
 	void	*floor_img;
 	void	*player_img;
@@ -48,14 +48,20 @@ typedef struct s_map
 	int		moves;
 }								t_map;
 
-t_map 	*map(void);
+t_map	*map(void);
 int		ft_checkmap(char **argv);
 int		ft_check(char **argv);
-int		ft_checkmap2(void);
-int		ft_checkmap3(void);
-int		ft_startgame(void);
+int		ft_checkwidth(void);
+int		ft_checkobjects(void);
+int		ft_checkwalls(void);
+int		ft_countobjects(void);
+void	ft_checkppos(void);
+int	ft_checkpath(int x, int y);
+// int		ft_checkmap2(void);
+// int		ft_checkmap3(t_map *map);
+// int		ft_startgame(void);
 void	ft_freemap(void);
-int		ft_checkmove(char a, int x, int y);
-int		ft_game_destroy(void);
+// int		ft_checkmove(char a, int x, int y);
+// int		ft_game_destroy(void);
 
 #endif

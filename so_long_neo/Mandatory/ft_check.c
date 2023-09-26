@@ -6,7 +6,7 @@
 /*   By: dcarrilh <dcarrilh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 11:29:25 by dcarrilh          #+#    #+#             */
-/*   Updated: 2023/09/25 23:37:35 by dcarrilh         ###   ########.fr       */
+/*   Updated: 2023/09/26 17:13:37 by dcarrilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	**ft_map(char **argv)
 	return (map()->map);
 }
 
-char	**ft_mapcheck(char **argv)
+char	**ft_mapcopy(char **argv)
 {
 	int		fd;
 	char	*line;
@@ -45,21 +45,21 @@ char	**ft_mapcheck(char **argv)
 
 	i = 0;
 	fd = open(argv[1], O_RDONLY);
-	map()->map_check = malloc(sizeof(char *) * (map()->height + 1));
-	if (!map()->map_check)
+	map()->map_copy = malloc(sizeof(char *) * (map()->height + 1));
+	if (!map()->map_copy)
 		return (0);
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		map()->map_check[i] = ft_strdup(line);
+		map()->map_copy[i] = ft_strdup(line);
 		i++;
 		free(line);
 	}
-	map()->map_check[i] = NULL;
+	map()->map_copy[i] = NULL;
 	close(fd);
-	return (map()->map_check);
+	return (map()->map_copy);
 }
 
 int	ft_checkmap(char **argv)
@@ -81,9 +81,8 @@ int	ft_checkmap(char **argv)
 		else
 			map()->width = ft_strlen(line);
 		if (map()->width == 0)
-			j = 1;
+			j = 2;
 		map()->height++;
-		printf("%d\n", map()->height);
 		free(line);
 	}
 	close(fd);
@@ -92,20 +91,19 @@ int	ft_checkmap(char **argv)
 
 int	ft_check(char **argv)
 {
-	int	i;
-
-	i = ft_checkmap(argv);
-	if (i == 0)
+	if (!ft_checkmap(argv))
 	{
 		map()->map = ft_map(argv);
-		map()->map_check = ft_mapcheck(argv);
-		if (ft_checkmap2() == 1)
+		map()->map_copy = ft_mapcopy(argv);
+		if (!ft_countobjects() && !ft_checkwidth() && !ft_checkobjects())
 		{
-			// if (ft_checkmap3() == 1)
-				return (1);
+			ft_checkppos();
+			ft_checkpath(map()->px, map()->py);
+			if (map()->ec != 1 || map()->cc != map()->collectible)
+				return (ft_printf("%s", "Error\nInvalid Path\n"));
 		}
 	}
-	if (i == 2)
-		ft_printf("%s", "Error\nInvalid object in map\n");
+	else
+		ft_printf("%s", "Error\nInvalid map\n");
 	return (0);
 }

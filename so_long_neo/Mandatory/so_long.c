@@ -6,7 +6,7 @@
 /*   By: dcarrilh <dcarrilh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:46:41 by dcarrilh          #+#    #+#             */
-/*   Updated: 2023/09/25 23:04:26 by dcarrilh         ###   ########.fr       */
+/*   Updated: 2023/09/26 16:20:34 by dcarrilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	setup_map(void)
 {
 	ft_bzero(map(), sizeof(t_map));
 	map()->map = NULL;
-	map()->map_check = NULL;
+	map()->map_copy = NULL;
 	map()->hei = 32;
 	map()->wid = 32;
 	map()->mlx = NULL;
