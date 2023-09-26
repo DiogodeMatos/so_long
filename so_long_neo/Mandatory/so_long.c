@@ -6,7 +6,7 @@
 /*   By: dcarrilh <dcarrilh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 10:46:41 by dcarrilh          #+#    #+#             */
-/*   Updated: 2023/09/26 16:20:34 by dcarrilh         ###   ########.fr       */
+/*   Updated: 2023/09/26 17:27:36 by dcarrilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int	main(int argc, char **argv)
 	if (ft_checkber(argv) == 0)
 		return (ft_printf("%s", "Error\nInvalid file extension\n"));
 	setup_map();
-	if (ft_check(argv) == 1)
-		//ft_startgame(&map);
+	if (!ft_check(argv))
+		ft_startgame(&map);
 	ft_freemap();
 	return (0);
 }

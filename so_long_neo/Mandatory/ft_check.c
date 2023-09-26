@@ -6,7 +6,7 @@
 /*   By: dcarrilh <dcarrilh@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 11:29:25 by dcarrilh          #+#    #+#             */
-/*   Updated: 2023/09/26 17:13:37 by dcarrilh         ###   ########.fr       */
+/*   Updated: 2023/09/26 17:27:27 by dcarrilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,6 @@ int	ft_check(char **argv)
 		}
 	}
 	else
-		ft_printf("%s", "Error\nInvalid map\n");
+		return (ft_printf("%s", "Error\nInvalid map\n"));
 	return (0);
 }
