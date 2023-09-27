@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_startgame_bonus.c                               :+:      :+:    :+:   */
+/*   ft_startgame.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcarrilh <dcarrilh@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcarrilh <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 09:49:45 by dcarrilh          #+#    #+#             */
-/*   Updated: 2023/09/16 19:05:58 by dcarrilh         ###   ########.fr       */
+/*   Updated: 2023/05/19 09:50:52 by dcarrilh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "so_long.h"
 
 void	ft_putimg(t_map *map, char element, int x, int y)
 {
@@ -29,9 +29,6 @@ void	ft_putimg(t_map *map, char element, int x, int y)
 	else if (element == 'E')
 		mlx_put_image_to_window(map->mlx, map->mlx_win,
 			map->exit_img, x * map->size, y * map->size);
-	else if (element == 'D')
-		mlx_put_image_to_window(map->mlx, map->mlx_win,
-			map->enemy_img, x * map->size, y * map->size);
 }
 
 void	ft_showimg(t_map *map)
@@ -57,8 +54,6 @@ void	ft_showimg(t_map *map)
 				ft_putimg(map, element, j, i);
 			else if (map->map[i][j] == 'E')
 				ft_putimg(map, element, j, i);
-			else if (map->map[i][j] == 'D')
-				ft_putimg(map, element, j, i);
 		}
 	}
 }
@@ -68,13 +63,9 @@ int	ft_game_destroy(t_map *map)
 	mlx_destroy_image(map->mlx, map->wall_img);
 	mlx_destroy_image(map->mlx, map->player_img);
 	mlx_destroy_image(map->mlx, map->collectible_img);
-	mlx_destroy_image(map->mlx, map->collectible1_img);
-	mlx_destroy_image(map->mlx, map->collectible2_img);
-	mlx_destroy_image(map->mlx, map->collectible3_img);
 	mlx_destroy_image(map->mlx, map->exit_img);
 	mlx_destroy_image(map->mlx, map->exitwin_img);
 	mlx_destroy_image(map->mlx, map->floor_img);
-	mlx_destroy_image(map->mlx, map->enemy_img);
 	mlx_destroy_window(map->mlx, map->mlx_win);
 	mlx_destroy_display(map->mlx);
 	free(map->mlx);
@@ -86,13 +77,13 @@ int	ft_keypress(int keysym, t_map *map)
 {
 	if (keysym == 65307)
 		ft_game_destroy(map);
-	if ((keysym == 119) || (keysym == 65362))
+	if (keysym == 119)
 		ft_checkmove(map, keysym, map->px, map->py - 1);
-	if ((keysym == 115) || (keysym == 65364))
+	if (keysym == 115)
 		ft_checkmove(map, keysym, map->px, map->py + 1);
-	if ((keysym == 97) || (keysym == 65361))
+	if (keysym == 97)
 		ft_checkmove(map, keysym, map->px - 1, map->py);
-	if ((keysym == 100) || (keysym == 65363))
+	if (keysym == 100)
 		ft_checkmove(map, keysym, map->px + 1, map->py);
 	return (0);
 }
@@ -102,7 +93,6 @@ int	ft_startgame(t_map *map)
 	map->mlx = mlx_init();
 	map->mlx_win = mlx_new_window(map->mlx, ((map->width + 1) * map->size),
 			(map->height * map->size), "Bananas Slave");
-	mlx_string_put(map->mlx, map->mlx_win, 100, 100, 0xFFFFFF, map->counter);
 	map->wall_img = mlx_xpm_file_to_image(map->mlx,
 			"./textures/wall.xpm", &map->wid, &map->hei);
 	map->floor_img = mlx_xpm_file_to_image(map->mlx,
@@ -111,23 +101,14 @@ int	ft_startgame(t_map *map)
 			"./textures/player.xpm", &map->wid, &map->hei);
 	map->collectible_img = mlx_xpm_file_to_image(map->mlx,
 			"./textures/collectible.xpm", &map->wid, &map->hei);
-	map->collectible1_img = mlx_xpm_file_to_image(map->mlx,
-			"./textures/collectible1.xpm", &map->wid, &map->hei);
-	map->collectible2_img = mlx_xpm_file_to_image(map->mlx,
-			"./textures/collectible2.xpm", &map->wid, &map->hei);
-	map->collectible3_img = mlx_xpm_file_to_image(map->mlx,
-			"./textures/collectible3.xpm", &map->wid, &map->hei);
 	map->exit_img = mlx_xpm_file_to_image(map->mlx, "./textures/exit.xpm",
 			&map->wid, &map->hei);
 	map->exitwin_img = mlx_xpm_file_to_image(map->mlx, "./textures/exit1.xpm",
-			&map->wid, &map->hei);
-	map->enemy_img = mlx_xpm_file_to_image(map->mlx, "./textures/enemy.xpm",
 			&map->wid, &map->hei);
 	ft_showimg(map);
 	mlx_hook(map->mlx_win, KeyPress, KeyPressMask, &ft_keypress, map);
 	mlx_hook(map->mlx_win, DestroyNotify,
 		ButtonPressMask, &ft_game_destroy, map);
-	mlx_loop_hook(map->mlx, ft_animations, map);
 	mlx_loop(map->mlx);
 	return (0);
 }
