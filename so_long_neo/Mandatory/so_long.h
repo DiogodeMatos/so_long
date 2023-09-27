@@ -49,19 +49,28 @@ typedef struct s_map
 }								t_map;
 
 t_map	*map(void);
-int		ft_checkmap(char **argv);
+void	setup_map(void);
+int		ft_checkber(char **argv);
 int		ft_check(char **argv);
+int		ft_checkmap(char **argv);
+char	**ft_mapcopy(char **argv);
+char	**ft_map(char **argv);
 int		ft_checkwidth(void);
 int		ft_checkobjects(void);
 int		ft_checkwalls(void);
 int		ft_countobjects(void);
 void	ft_checkppos(void);
-int	ft_checkpath(int x, int y);
-// int		ft_checkmap2(void);
-// int		ft_checkmap3(t_map *map);
-// int		ft_startgame(void);
+int		ft_checkpath(int x, int y);
+int		ft_startgame(void);
+void	ft_showimg();
+void	ft_putimg(char element, int x, int y);
+int		ft_keypress(int keysym);
+int		ft_checkmove(char a, int x, int y);
+void	ft_moved(void);
+void	ft_movea(void);
+void	ft_moves(void);
+void	ft_movew(void);
+int		ft_game_destroy(void);
 void	ft_freemap(void);
-// int		ft_checkmove(char a, int x, int y);
-// int		ft_game_destroy(void);
 
 #endif

@@ -20,9 +20,9 @@ int	ft_checkpath(int x, int y)
 		map()->cc++;
 	if (map()->map_copy[y][x] == 'E')
 	{
-		if (map()->cc != map()->collectible)
-			return (1);
-		map()->ec++;
+		if (map()->cc == map()->collectible)
+			map()->ec++;
+		return (0);
 	}
 	map()->map_copy[y][x] = 'X';
 	ft_checkpath(x + 1, y);

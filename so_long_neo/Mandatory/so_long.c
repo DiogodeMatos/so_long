@@ -57,7 +57,7 @@ int	main(int argc, char **argv)
 		return (ft_printf("%s", "Error\nInvalid file extension\n"));
 	setup_map();
 	if (!ft_check(argv))
-		ft_startgame(&map);
+		ft_startgame();
 	ft_freemap();
 	return (0);
 }

@@ -70,7 +70,7 @@ int	ft_checkmap(char **argv)
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		return (ft_printf("%s", "Error\nInvalid file\n"));
+		return (2);
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -99,9 +99,13 @@ int	ft_check(char **argv)
 		{
 			ft_checkppos();
 			ft_checkpath(map()->px, map()->py);
+			printf("cc: %d\nec: %d\n", map()->cc, map()->ec);
+			printf("collectible: %d\n", map()->collectible);
 			if (map()->ec != 1 || map()->cc != map()->collectible)
 				return (ft_printf("%s", "Error\nInvalid Path\n"));
 		}
+		else
+			return (1);
 	}
 	else
 		return (ft_printf("%s", "Error\nInvalid map\n"));

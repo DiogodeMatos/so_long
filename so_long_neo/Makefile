@@ -1,7 +1,7 @@
 NAME = so_long
 
-SRC = Mandatory/so_long.c Mandatory/ft_check.c Mandatory/ft_checkmap2.c Mandatory/ft_checkmap3.c \
-	Mandatory/ft_startgame.c Mandatory/ft_freemap.c Mandatory/ft_checkmove.c Mandatory/ft_map.c \
+SRC = Mandatory/so_long.c Mandatory/ft_check.c Mandatory/ft_check2.c Mandatory/ft_check3.c \
+	Mandatory/ft_startgame.c Mandatory/ft_freemap.c Mandatory/ft_map.c Mandatory/ft_checkmove.c \
 
 BNS = Bonus/so_long_bonus.c Bonus/ft_check_bonus.c Bonus/ft_checkmap2_bonus.c Bonus/ft_checkmap3_bonus.c \
 	Bonus/ft_startgame_bonus.c Bonus/ft_freemap_bonus.c Bonus/ft_checkmove_bonus.c
